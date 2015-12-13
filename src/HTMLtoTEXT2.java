@@ -14,21 +14,21 @@ public class HTMLtoTEXT2 {
 	File file=new File(path);
 	File[] tempList = file.listFiles();
 	
-	public HTMLtoTEXT2() throws IOException{
+	public void HTMLtoTEXT2() throws IOException{
 	for (int i = 0; i < tempList.length; i++) {
 		selectedFile=tempList[i];
 		org.jsoup.nodes.Document doc = Jsoup.parse(selectedFile,"UTF-8");
 		textOfFile = doc.text();
 		texts[i]=textOfFile;
 //		System.out.println(textOfFile);
-		PrintWriter out = new PrintWriter("D:/"+tempList[i].getName().substring(0,tempList[i].getName().lastIndexOf("."))+".txt");//write every html's result to a text
+		PrintWriter out = new PrintWriter("D:/101result/"+tempList[i].getName().substring(0,tempList[i].getName().lastIndexOf("."))+".txt");//write every html's result to a text
 		out.println(textOfFile);
 		out.close();
 		}
 	}
 
-	public static void main(String[] args){
-	
-		
+	public static void main(String[] args) throws IOException{
+		HTMLtoTEXT2 x=new HTMLtoTEXT2();
+		x.HTMLtoTEXT2();
 	}
 }
